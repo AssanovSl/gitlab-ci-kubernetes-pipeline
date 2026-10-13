@@ -1,0 +1,38 @@
+# Объект PV предоставляет хранилище. 
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgres-pv
+spec:
+  capacity:
+    storage: 2Gi  
+  accessModes:
+    - ReadWriteOnce   
+  persistentVolumeReclaimPolicy: Retain   
+  storageClassName: manual   
+  hostPath:
+    path: /data/postgres   
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - k3s-worker01   
+---
+# Объект PVС запрашивает и резервирует хранилище. 
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: manual   
+  volumeName: postgres-pv   
+  resources:
+    requests:
+      storage: 1Gi   

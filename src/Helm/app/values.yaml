@@ -1,0 +1,29 @@
+images:
+
+  booking:
+    repository: dorothag/booking-service
+    tag: arm
+
+  gateway:
+    repository: dorothag/gateway-service
+    tag: arm
+
+  hotel:
+    repository: dorothag/hotel-service
+    tag: arm
+
+  loyalty:
+    repository: dorothag/loyalty-service
+    tag: arm
+
+  payment:
+    repository: dorothag/payment-service
+    tag: arm
+
+  report:
+    repository: dorothag/report-service
+    tag: arm
+
+  session:
+    repository: dorothag/session-service
+    tag: arm
